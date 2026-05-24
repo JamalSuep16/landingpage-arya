@@ -267,11 +267,12 @@
 
     /* ── SERVICES ── */
     #services {}
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
     .service-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 16px; padding: 2rem;
       position: relative; overflow: hidden; transition: all 0.3s;
+      display: flex; flex-direction: column; justify-content: space-between;
     }
     .service-card:hover { border-color: rgba(126,255,160,0.25); transform: translateY(-4px); }
     .service-card::before {
@@ -290,14 +291,14 @@
       font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem;
       margin-bottom: 0.75rem;
     }
-    .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+    .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
     .service-price {
       margin-top: 1.5rem; padding-top: 1.25rem;
       border-top: 1px solid var(--border);
     }
     .price-label { font-size: 0.72rem; color: var(--text-muted); font-family: 'Syne', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; }
     .price-value { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--accent); margin-top: 0.2rem; }
-    .service-features { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .service-features { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; flex-grow: 1; }
     .service-features li { font-size: 0.83rem; color: var(--text-muted); display: flex; gap: 0.6rem; align-items: flex-start; }
     .service-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
     .service-badge {
@@ -330,11 +331,9 @@
     .testi-role { font-size: 0.78rem; color: var(--text-muted); }
 
     /* ── CONTACT ── */
-    #contact { }
     .contact-wrapper {
       display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
     }
-    .contact-info {}
     .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
     .contact-link {
       display: flex; align-items: center; gap: 1rem;
@@ -454,7 +453,6 @@
 </head>
 <body>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
   <a href="#portfolio" onclick="closeMobileMenu()" data-id="nav-portfolio">Portofolio</a>
@@ -464,7 +462,6 @@
   <a href="https://wa.me/6289512376842" target="_blank" style="color: var(--accent)">WhatsApp</a>
 </div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Arya.dev</div>
   <div class="nav-links">
@@ -485,7 +482,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg-blob blob1"></div>
   <div class="hero-bg-blob blob2"></div>
@@ -516,7 +512,6 @@
   </div>
 </section>
 
-<!-- TECH TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
     <div class="ticker-item"><span>⚡</span> Next.js</div>
@@ -540,7 +535,6 @@
   </div>
 </div>
 
-<!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="reveal">
     <div class="section-tag" data-id="port-tag">Portofolio</div>
@@ -548,7 +542,6 @@
     <p class="section-sub" data-id="port-sub">Setiap proyek dirancang dengan teliti — dari strategi, desain, hingga deployment production.</p>
   </div>
   <div class="portfolio-grid reveal">
-    <!-- Card 1 -->
     <div class="portfolio-card">
       <div class="portfolio-img">
         <img 
@@ -558,9 +551,7 @@
         />
       </div>
       <div class="portfolio-body">
-        
         <div class="portfolio-tech-stack" style="margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-          
           <div class="stack-group" style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
             <span style="font-size: 0.75rem; font-weight: bold; color: #888; text-transform: uppercase; min-width: 70px;">Frontend:</span>
             <span class="ptag">Next.js</span>
@@ -568,33 +559,27 @@
             <span class="ptag orange">TypeScript</span>
             <span class="ptag blue">Tailwind CSS</span>
           </div>
-    
           <div class="stack-group" style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
             <span style="font-size: 0.75rem; font-weight: bold; color: #888; text-transform: uppercase; min-width: 70px;">Backend:</span>
             <span class="ptag green">Node.js</span>
             <span class="ptag green">Express.js</span>
             <span class="ptag purple">RESTful API</span>
           </div>
-    
           <div class="stack-group" style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
             <span style="font-size: 0.75rem; font-weight: bold; color: #888; text-transform: uppercase; min-width: 70px;">Database:</span>
             <span class="ptag purple">PostgreSQL</span>
             <span class="ptag orange">Prisma ORM</span>
             <span class="ptag">Supabase</span>
           </div>
-    
         </div>
-    
         <h3 data-id="p1-title">Fresh Market — Toko Online Produk Segar</h3>
         <p data-id="p1-desc">Klien membutuhkan toko online yang cepat dan mudah di-manage sendiri tanpa bergantung developer. Dibangun dengan Next.js App Router + Tailwind CSS untuk performa optimal dan tampilan yang bersih. Produk, stok, dan pesanan bisa dikelola via dashboard admin yang intuitif.</p>
-        
         <div class="portfolio-result">
           <strong data-id="p1-result-label">Hasil</strong>
           <p data-id="p1-result">Lighthouse score 98/100 · Mobile-friendly · Waktu deploy dari desain ke produksi: 2 minggu</p>
         </div>
       </div>
     </div>
-    <!-- Card 2 -->
     <div class="portfolio-card">
       <div class="portfolio-img" style="background:linear-gradient(135deg,#1a1033,#2d1b4e);">
         <div class="portfolio-img-mockup" style="background:linear-gradient(135deg,#12001f,#200838);">
@@ -626,7 +611,6 @@
         </div>
       </div>
     </div>
-    <!-- Card 3 -->
     <div class="portfolio-card">
       <div class="portfolio-img" style="background:linear-gradient(135deg,#001a10,#003820);">
         <div class="portfolio-img-mockup" style="background:linear-gradient(135deg,#001510,#002018);">
@@ -661,7 +645,6 @@
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="reveal">
     <div class="section-tag" data-id="svc-tag">Layanan & Harga</div>
@@ -669,7 +652,23 @@
     <p class="section-sub" data-id="svc-sub">Semua paket sudah termasuk konsultasi gratis, revisi, dan deployment. Tidak ada biaya tersembunyi.</p>
   </div>
   <div class="services-grid reveal">
-    <!-- Paket 1 -->
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(255,138,101,0.1);border-color:rgba(255,138,101,0.2);">🎁</div>
+      <h3 data-id="svc-greet-title">Digital Invitation & Greeting</h3>
+      <p data-id="svc-greet-desc">Undangan atau ucapan interaktif personal yang unik untuk ulang tahun, pernikahan, atau momen spesial.</p>
+      <ul class="service-features">
+        <li data-id="svc-greet-f1">Desain custom interaktif & kreatif</li>
+        <li data-id="svc-greet-f2">Integrasi musik latar / backsound</li>
+        <li data-id="svc-greet-f3">Countdown timer & detail acara</li>
+        <li data-id="svc-greet-f4">Buku tamu / Kolom ucapan digital</li>
+        <li data-id="svc-greet-f5">Galeri foto & integrasi amplop QR</li>
+      </ul>
+      <div class="service-price">
+        <div class="price-label" data-id="svc-from-greet">Mulai dari</div>
+        <div class="price-value" data-id="svc-price-greet">Rp 400rb</div>
+      </div>
+    </div>
+
     <div class="service-card">
       <div class="service-icon">🚀</div>
       <h3 data-id="svc1-title">Landing Page</h3>
@@ -683,10 +682,27 @@
       </ul>
       <div class="service-price">
         <div class="price-label" data-id="svc-from">Mulai dari</div>
-        <div class="price-value">Rp 800rb</div>
+        <div class="price-value" data-id="svc-price-lp">Rp 800rb</div>
       </div>
     </div>
-    <!-- Paket 2 -->
+
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(91,200,255,0.1);border-color:rgba(91,200,255,0.2);">🎨</div>
+      <h3 data-id="svc-port-title">Personal Portfolio / Showcase</h3>
+      <p data-id="svc-port-desc">Pamerkan karya terbaik, proyek, atau pencapaian Anda secara elegan untuk memikat calon klien potensial.</p>
+      <ul class="service-features">
+        <li data-id="svc-port-f1">Desain grid galeri modern custom</li>
+        <li data-id="svc-port-f2">Halaman detail proyek dinamis</li>
+        <li data-id="svc-port-f3">Bagian Tentang Saya & Jasa</li>
+        <li data-id="svc-port-f4">Formulir kontak & chat WhatsApp</li>
+        <li data-id="svc-port-f5">Optimasi performa & SEO basic</li>
+      </ul>
+      <div class="service-price">
+        <div class="price-label" data-id="svc-from-port">Mulai dari</div>
+        <div class="price-value" data-id="svc-price-port">Rp 1,5jt</div>
+      </div>
+    </div>
+
     <div class="service-card" style="border-color:rgba(126,255,160,0.3);">
       <div class="service-badge" data-id="svc2-badge">Populer</div>
       <div class="service-icon" style="background:rgba(126,255,160,0.15);">🌐</div>
@@ -702,10 +718,10 @@
       </ul>
       <div class="service-price">
         <div class="price-label" data-id="svc-from2">Mulai dari</div>
-        <div class="price-value">Rp 2,5jt</div>
+        <div class="price-value" data-id="svc-price-smb">Rp 2,5jt</div>
       </div>
     </div>
-    <!-- Paket 3 -->
+
     <div class="service-card">
       <div class="service-icon" style="background:rgba(91,200,255,0.1);border-color:rgba(91,200,255,0.2);">⚙️</div>
       <h3 data-id="svc3-title">Web App / Sistem Custom</h3>
@@ -720,7 +736,7 @@
       </ul>
       <div class="service-price">
         <div class="price-label" data-id="svc-from3">Mulai dari</div>
-        <div class="price-value">Rp 8jt</div>
+        <div class="price-value" data-id="svc-price-custom">Rp 8jt</div>
       </div>
     </div>
   </div>
@@ -729,7 +745,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="reveal">
     <div class="section-tag" data-id="testi-tag">Testimoni</div>
@@ -739,7 +754,7 @@
   <div class="testi-grid reveal">
     <div class="testi-card">
       <div class="stars">★★★★★</div>
-      <p class="testi-text" data-id="t1-text">"Arya sangat profesional dan responsif. Website toko online kami selesai lebih cepat dari yang dijanjikan, dan hasilnya melampaui ekspektasi. Tampilannya bersih, cepat, dan pelanggan kami suka!"</p>
+      <p class="testi-text" data-id="t1-text">"Arya sangat profesional dan responsif. Website toko online kami selesai lebih cepat dari yang dijanjikan, and hasilnya melampaui ekspektasi. Tampilannya bersih, cepat, dan pelanggan kami suka!"</p>
       <div class="testi-author">
         <div class="testi-avatar">RS</div>
         <div>
@@ -773,7 +788,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-wrapper">
     <div>
@@ -816,16 +830,16 @@
         <div class="form-row">
           <div class="form-group">
             <label data-id="f-name">Nama</label>
-            <input type="text" required placeholder="Nama Anda" />
+            <input type="text" id="inp-name" required placeholder="Nama Anda" />
           </div>
           <div class="form-group">
             <label data-id="f-email">Email / WhatsApp</label>
-            <input type="text" required placeholder="email@anda.com" />
+            <input type="text" id="inp-contact" required placeholder="email@anda.com" />
           </div>
         </div>
         <div class="form-group">
           <label data-id="f-service">Layanan yang Diminati</label>
-          <select>
+          <select id="inp-service">
             <option data-id="f-opt0">Pilih layanan...</option>
             <option data-id="f-opt1">Landing Page</option>
             <option data-id="f-opt2">Website UMKM / Profil Bisnis</option>
@@ -835,7 +849,7 @@
         </div>
         <div class="form-group">
           <label data-id="f-msg">Ceritakan Proyek Anda</label>
-          <textarea placeholder="Apa tujuan website Anda? Target pasar? Ada referensi tampilan?" data-id="f-msg-ph"></textarea>
+          <textarea id="inp-message" placeholder="Apa tujuan website Anda? Target pasar? Ada referensi tampilan?" data-id="f-msg-ph"></textarea>
         </div>
         <button type="submit" class="form-submit" data-id="f-submit">Kirim Pesan 🚀</button>
       </form>
@@ -843,7 +857,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Arya.dev</div>
   <div class="footer-copy" data-id="footer-copy">© 2025 Arya Prabangsa Suhara. All rights reserved.</div>
@@ -854,7 +867,6 @@
   </div>
 </footer>
 
-<!-- FLOATING WA -->
 <a href="https://wa.me/6289512376842?text=Halo%20Arya%2C%20saya%20ingin%20konsultasi%20website" target="_blank" class="wa-float" id="waFloat">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <span data-id="wa-btn">Chat WhatsApp</span>
@@ -893,9 +905,24 @@ const translations = {
     'p3-desc': 'Landing page satu halaman untuk produk UMKM dengan copywriting yang dioptimasi untuk konversi, animasi halus, dan tombol CTA WhatsApp terintegrasi langsung.',
     'p3-result-label': 'Hasil',
     'p3-result': 'Konversi meningkat 3x lipat · Google PageSpeed 95+ · Selesai dalam 5 hari kerja',
+    
     'svc-tag': 'Layanan & Harga',
     'svc-h2': 'Pilih Paket yang <em>Tepat</em> untuk Anda',
     'svc-sub': 'Semua paket sudah termasuk konsultasi gratis, revisi, dan deployment. Tidak ada biaya tersembunyi.',
+    'svc-from': 'Mulai dari',
+    'svc-from2': 'Mulai dari',
+    'svc-from3': 'Mulai dari',
+    
+    'svc-greet-title': 'Undangan & Ucapan Digital',
+    'svc-greet-desc': 'Undangan atau ucapan interaktif personal yang unik untuk ulang tahun, pernikahan, atau momen spesial.',
+    'svc-greet-f1': 'Desain custom interaktif & kreatif',
+    'svc-greet-f2': 'Integrasi musik latar / backsound',
+    'svc-greet-f3': 'Countdown timer & detail acara',
+    'svc-greet-f4': 'Buku tamu & kolom ucapan digital',
+    'svc-greet-f5': 'Galeri foto & integrasi amplop QR',
+    'svc-from-greet': 'Mulai dari',
+    'svc-price-greet': 'Rp 400rb',
+    
     'svc1-title': 'Landing Page',
     'svc1-desc': 'Cocok untuk UMKM, pelaku bisnis, atau freelancer yang butuh kehadiran online yang cepat dan profesional.',
     'svc1-f1': 'Desain custom 1 halaman',
@@ -903,7 +930,18 @@ const translations = {
     'svc1-f3': 'Responsive & mobile-friendly',
     'svc1-f4': 'Optimasi SEO dasar',
     'svc1-f5': 'Deployment ke Vercel',
-    'svc-from': 'Mulai dari',
+    'svc-price-lp': 'Rp 800rb',
+    
+    'svc-port-title': 'Portofolio Pribadi / Showcase',
+    'svc-port-desc': 'Pamerkan karya terbaik, proyek, atau pencapaian Anda secara elegan untuk memikat calon klien potensial.',
+    'svc-port-f1': 'Desain grid galeri modern custom',
+    'svc-port-f2': 'Halaman detail proyek dinamis',
+    'svc-port-f3': 'Bagian Tentang Saya & Jasa',
+    'svc-port-f4': 'Formulir kontak & chat WhatsApp',
+    'svc-port-f5': 'Optimasi performa & SEO basic',
+    'svc-from-port': 'Mulai dari',
+    'svc-price-port': 'Rp 1,5jt',
+
     'svc2-badge': 'Populer',
     'svc2-title': 'Website UMKM / Profil Bisnis',
     'svc2-desc': 'Website multi-halaman lengkap untuk bisnis Anda. Tampilan profesional yang membangun kepercayaan pelanggan.',
@@ -913,7 +951,8 @@ const translations = {
     'svc2-f4': 'Formulir kontak & WhatsApp',
     'svc2-f5': 'SEO on-page lengkap',
     'svc2-f6': '3x revisi desain',
-    'svc-from2': 'Mulai dari',
+    'svc-price-smb': 'Rp 2,5jt',
+    
     'svc3-title': 'Web App / Sistem Custom',
     'svc3-desc': 'Aplikasi web dengan fitur lengkap: autentikasi, database, dashboard admin, dan API. Untuk bisnis yang butuh sistem digital yang sesungguhnya.',
     'svc3-f1': 'Full-stack development',
@@ -922,7 +961,8 @@ const translations = {
     'svc3-f4': 'Dashboard admin custom',
     'svc3-f5': 'Integrasi payment gateway',
     'svc3-f6': 'Support 1 bulan pasca-launch',
-    'svc-from3': 'Mulai dari',
+    'svc-price-custom': 'Rp 8jt',
+    
     'svc-note': 'Tidak yakin paket mana yang cocok? <a href="#contact" style="color:var(--accent);text-decoration:none;" data-id="svc-note-link">Hubungi saya untuk diskusi gratis.</a>',
     'testi-tag': 'Testimoni',
     'testi-h2': 'Apa Kata <em>Mereka?</em>',
@@ -986,9 +1026,24 @@ const translations = {
     'p3-desc': 'A single-page landing page for an SMB product with conversion-optimized copywriting, smooth animations, and a directly integrated WhatsApp CTA button.',
     'p3-result-label': 'Result',
     'p3-result': 'Conversions tripled · Google PageSpeed 95+ · Completed in 5 business days',
+    
     'svc-tag': 'Services & Pricing',
     'svc-h2': 'Choose the <em>Right</em> Package for You',
     'svc-sub': 'All packages include a free consultation, revisions, and deployment. No hidden fees.',
+    'svc-from': 'Starting from',
+    'svc-from2': 'Starting from',
+    'svc-from3': 'Starting from',
+    
+    'svc-greet-title': 'Digital Invitation & Greeting',
+    'svc-greet-desc': 'A memorable, interactive, and personalized digital greeting or invitation for birthdays, weddings, or special events.',
+    'svc-greet-f1': 'Interactive & attractive custom design',
+    'svc-greet-f2': 'Backsound / music integration',
+    'svc-greet-f3': 'Countdown timer & event details',
+    'svc-greet-f4': 'RSVP & wishes/greeting wall',
+    'svc-greet-f5': 'Photo gallery & digital gift QR',
+    'svc-from-greet': 'Starting from',
+    'svc-price-greet': '$25',
+
     'svc1-title': 'Landing Page',
     'svc1-desc': 'Perfect for SMBs, business owners, or freelancers who need a fast, professional online presence.',
     'svc1-f1': 'Custom single-page design',
@@ -996,7 +1051,18 @@ const translations = {
     'svc1-f3': 'Responsive & mobile-friendly',
     'svc1-f4': 'Basic SEO optimization',
     'svc1-f5': 'Deployed to Vercel',
-    'svc-from': 'Starting from',
+    'svc-price-lp': '$50',
+
+    'svc-port-title': 'Personal Portfolio / Showcase',
+    'svc-port-desc': 'An elegant online portfolio to showcase your best work, projects, or achievements and turn visitors into clients.',
+    'svc-port-f1': 'Custom modern grid/gallery design',
+    'svc-port-f2': 'Dynamic project details page',
+    'svc-port-f3': 'About Me & Services section',
+    'svc-port-f4': 'Contact form & WhatsApp integration',
+    'svc-port-f5': 'Performance & basic SEO optimization',
+    'svc-from-port': 'Starting from',
+    'svc-price-port': '$100',
+
     'svc2-badge': 'Popular',
     'svc2-title': 'SMB Website / Business Profile',
     'svc2-desc': 'A complete multi-page website for your business. A professional look that builds customer trust.',
@@ -1006,7 +1072,8 @@ const translations = {
     'svc2-f4': 'Contact form & WhatsApp',
     'svc2-f5': 'Full on-page SEO',
     'svc2-f6': '3x design revisions',
-    'svc-from2': 'Starting from',
+    'svc-price-smb': '$160',
+
     'svc3-title': 'Web App / Custom System',
     'svc3-desc': 'Full-featured web application: authentication, database, admin dashboard, and API. For businesses that need a real digital system.',
     'svc3-f1': 'Full-stack development',
@@ -1015,8 +1082,10 @@ const translations = {
     'svc3-f4': 'Custom admin dashboard',
     'svc3-f5': 'Payment gateway integration',
     'svc3-f6': '1-month post-launch support',
-    'svc-from3': 'Starting from',
+    'svc-price-custom': '$500',
+    
     'svc-note': 'Not sure which package fits? <a href="#contact" style="color:var(--accent);text-decoration:none;">Contact me for a free discussion.</a>',
+    'testi-tech-label': 'My Tech Stack',
     'testi-tag': 'Testimonials',
     'testi-h2': 'What Do <em>They Say?</em>',
     'testi-sub': 'Client trust is my greatest asset. Here\'s feedback from a few people I\'ve worked with.',
@@ -1073,7 +1142,6 @@ function setLang(lang) {
       }
     }
   });
-  // Update WA link text
   const waCta = document.querySelector('.wa-float span');
   if (waCta) waCta.innerHTML = t['wa-btn'] || '';
 }
@@ -1082,10 +1150,31 @@ function setLang(lang) {
 function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
 function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 
-// ── FORM SUBMIT ──
+// ── FORM SUBMIT (WHATSAPP REDIRECTION) ──
 function submitForm(e) {
   e.preventDefault();
-  const t = translations[currentLang];
+  
+  // 1. Ambil nilai data yang diinput user
+  const name = document.getElementById('inp-name').value;
+  const contact = document.getElementById('inp-contact').value;
+  const service = document.getElementById('inp-service').value;
+  const message = document.getElementById('inp-message').value;
+  
+  // 2. Format teks pesan berstruktur profesional
+  const textMessage = `Halo Arya, ada pesan masuk dari formulir website:\n\n` +
+                      `*Nama:* ${name}\n` +
+                      `*Kontak (Email/WA):* ${contact}\n` +
+                      `*Layanan Diminati:* ${service}\n` +
+                      `*Detail Proyek:* ${message}`;
+  
+  // 3. Konversi teks ke format URL-safe
+  const encodedText = encodeURIComponent(textMessage);
+  const waUrl = `https://wa.me/6289512376842?text=${encodedText}`;
+  
+  // 4. Buka tab baru menuju WhatsApp Anda
+  window.open(waUrl, '_blank');
+  
+  // 5. Tampilkan status sukses di website Anda
   document.getElementById('contactForm').style.display = 'none';
   document.getElementById('form-success').style.display = 'block';
 }
